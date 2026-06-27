@@ -1,44 +1,48 @@
+export type SectionId =
+  | 'dashboard'
+  | 'digital-twin'
+  | 'iot-management'
+  | 'predictive-maintenance'
+  | 'solution-configurator'
+  | 'resources';
 
-export enum AppSection {
-  DASHBOARD = 'DASHBOARD',
-  DIGITAL_TWIN = 'DIGITAL_TWIN',
-  PREDICTIVE_MAINTENANCE = 'PREDICTIVE_MAINTENANCE',
-  IOT_MANAGEMENT = 'IOT_MANAGEMENT',
-  CONFIGURATOR = 'CONFIGURATOR',
-  RESOURCES = 'RESOURCES'
+export interface NavItem {
+  id: SectionId;
+  label: string;
 }
 
-export interface DeviceStatus {
+export interface SensorReading {
+  timestamp: string;
+  flowRate: number;
+  turbidity: number;
+  dissolvedOxygen: number;
+  ph: number;
+  temperature: number;
+}
+
+export type AssetStatus = 'online' | 'warning' | 'offline';
+
+export interface PlantAsset {
   id: string;
   name: string;
-  status: 'online' | 'offline' | 'warning';
-  battery: number;
+  type: string;
+  status: AssetStatus;
+  healthScore: number;
+}
+
+export interface IoTDevice {
+  id: string;
+  name: string;
+  location: string;
+  status: AssetStatus;
   lastSeen: string;
+  batteryLevel: number;
 }
 
-export interface MaintenanceReport {
-  timestamp: string;
-  prediction: string;
-  confidence: number;
-  recommendations: string[];
-}
-
-export interface AutomationSolution {
-  title: string;
-  description: string;
-  components: string[];
-  estimatedROI: string;
-}
-
-export interface EngineeringConflict {
-  type: 'Mechanical' | 'Logical' | 'Physics';
-  severity: 'Critical' | 'Warning' | 'Info';
-  description: string;
-  mitigation: string;
-}
-
-export interface DesignValidation {
-  status: 'Safe' | 'At Risk' | 'Violation';
-  conflicts: EngineeringConflict[];
-  efficiencyScore: number;
+export interface MaintenanceForecast {
+  assetId: string;
+  assetName: string;
+  failureRisk: number;
+  predictedWindow: string;
+  recommendation: string;
 }

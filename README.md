@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# WWTT — Wastewater Treatment Digital Twin Platform
 
-# Run and deploy your AI Studio app
+A digital twin platform for wastewater treatment plant monitoring, IoT device management, and predictive maintenance, with Gemini-powered AI insights.
 
-This contains everything you need to run your app locally.
+## Sections
 
-View your app in AI Studio: https://ai.studio/apps/drive/1FmJ351dERlEfEcD4v7uG158Q4KgHRqBw
+- **Dashboard** — real-time plant KPIs and flow rate trend.
+- **Digital Twin** — live status and health score of plant assets.
+- **IoT Management** — connected sensor fleet status.
+- **Predictive Maintenance** — failure risk forecasts with AI-generated explanations.
+- **Solution Configurator** — build and estimate a deployment package.
+- **Resources** — documentation and guides.
 
-## Run Locally
+## Development
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+Set `GEMINI_API_KEY` in a `.env.local` file to enable AI insights in Predictive Maintenance.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the app and deploys it to GitHub Pages. Set the `GEMINI_API_KEY` repository secret to enable AI features in production. Enable GitHub Pages with source "GitHub Actions" in repo settings.
